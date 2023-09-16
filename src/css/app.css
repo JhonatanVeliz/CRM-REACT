@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.title--clientes{
+    display: inline-block;
+    border-bottom: 10px solid rgb(30 64 175);
+}
