@@ -49,20 +49,12 @@ export const loader = () => {
 
 const Index = () => {
 
-  function get() {
-
-    const { data, loading, errors } = useFetch('http://localhost:5173/db.json');
-    console.log(data);
-  }
-
-  get();
-
   const data = useLoaderData();
 
   return (
     <>
       <h1 className="text-4xl font-black text-blue-800 pb-2 title--clientes">Clientes</h1>
-      <p className="mt-3 text-xl font-bold">Administra tus clientes</p>
+      <p className="mt-3 text-xl font-bold text-slate-700">Administra tus clientes</p>
 
       {
         data.length >= 1 ?

@@ -6,3 +6,15 @@
     display: inline-block;
     border-bottom: 10px solid rgb(30 64 175);
 }
+input{
+    transition: .3s linear;
+    outline: none;
+}
+input:focus{
+    box-shadow: 0px 1px 5px #dfdfdf;
+}
+textarea{
+    min-height: 50px;
+    max-height: 100px;
+    outline: none;
+}
