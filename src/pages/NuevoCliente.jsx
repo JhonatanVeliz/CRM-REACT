@@ -1,9 +1,32 @@
-import { Form, useNavigate } from "react-router-dom";
+import { useNavigate, Form, useActionData } from "react-router-dom";
 import Formulario from "../components/Formulario";
+import { Errors } from "../components/Errors";
+
+export async function action({ request }) {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  const email = formData.get('email');
+  const errors = [];
+  const regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
+
+  if(!email.match(regex)){
+    errors.push('email no válido');
+  }
+
+  if (Object.values(data).includes('')) {
+    errors.push('todos los campos son obligatorios');
+  }
+
+  if(errors.length > 0 ){
+    return errors
+  }
+  return null;
+}
 
 const NuevoCliente = () => {
 
   const navigate = useNavigate();
+  const errores = useActionData();
 
   return (
     <>
@@ -18,11 +41,21 @@ const NuevoCliente = () => {
       </div>
 
       <div className="bg-white shadow rounded md:w-3/4 p-6">
-        <Formulario />
-        <input type="submit" 
-        className="bg-blue-800 font-bold uppercase text-white w-full p-2 rounded cursor-pointer"
-        value='registrar cliente'
-        />
+
+        {
+          errores?.length && errores.map( ( err, i ) => <Errors key={i}> { err } </Errors> ) 
+        }
+
+        <Form method="POST" noValidate>
+
+          <Formulario />
+          <input type="submit" 
+          className="bg-blue-800 font-bold uppercase text-white w-full p-2 rounded cursor-pointer"
+          value='registrar cliente'
+          />
+
+        </Form>
+
       </div>
 
     </>
