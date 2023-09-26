@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import Index, { loader as clientesLoader } from './pages/Index';
 import NuevoCliente, { action as nuevoClienteAction } from './pages/NuevoCliente';
-import EditClient, {loader as clienteEditarLoader} from './components/EditClient';
+import EditClient, {loader as clienteEditarLoader, action as clienteEditarAction} from './components/EditClient';
 import ErrorsPage from './components/ErrorsPage';
 
 const router = createBrowserRouter([
@@ -28,6 +28,7 @@ const router = createBrowserRouter([
       {
         path: '/clientes/:clienteId/editar',
         loader: clienteEditarLoader,
+        action: clienteEditarAction,
         element: <EditClient />,
         errorElement:  <ErrorsPage />
       }

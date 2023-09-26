@@ -12,6 +12,19 @@ const getClients = async () => {
   catch (error) {console.log(error)}
 };
 
+const getClientUpdate = async (id) => {
+
+  const url = `${import.meta.env.VITE_API_URL}/${id}`;
+
+  try {
+    const respuesta = await fetch(url);
+    if(!respuesta.ok) throw new Error('Error', respuesta.status);
+    const client    = await respuesta.json();
+    return client;
+  } 
+  catch (error) { console.log(error) }
+}
+
 const postClients = async ( data ) => {
   const url = import.meta.env.VITE_API_URL;
 
@@ -27,7 +40,29 @@ const postClients = async ( data ) => {
   catch (error) { console.log(error) }
 
 }
+
+const updateClient = async (id, data) => {
+
+  const url = `${import.meta.env.VITE_API_URL}/${id}`;
+
+  try {
+
+    const options = {
+      method: 'PUT',
+      body : JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+
+    const respuesta = await fetch(url, options);
+    await respuesta.json();
+  } catch (error) { console.log(error) }
+}
+
 export {
   getClients,
-  postClients
+  postClients,
+  getClientUpdate,
+  updateClient
 }
