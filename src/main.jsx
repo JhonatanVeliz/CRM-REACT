@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./components/Layout";
 import Index, { loader as clientesLoader } from './pages/Index';
 import NuevoCliente, { action as nuevoClienteAction } from './pages/NuevoCliente';
+import EditClient, {loader as clienteEditarLoader} from './components/EditClient';
+import ErrorsPage from './components/ErrorsPage';
 
 const router = createBrowserRouter([
   {
@@ -14,19 +16,26 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Index />,
-        loader: clientesLoader
+        loader: clientesLoader,
+        errorElement: <ErrorsPage />
       },
       {
         path: '/clientes/nuevo',
         element: <NuevoCliente />,
-        action: nuevoClienteAction
+        action: nuevoClienteAction,
+        errorElement:  <ErrorsPage />
+      },
+      {
+        path: '/clientes/:clienteId/editar',
+        loader: clienteEditarLoader,
+        element: <EditClient />,
+        errorElement:  <ErrorsPage />
       }
     ]
   }
 ])
 
 import './css/app.css'
-
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

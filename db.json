@@ -1,37 +1,55 @@
-[
+{
+  "clientes": [
     {
-        "id": 1,
-        "nombre": "Juan",
-        "telefono": 102013313,
-        "email": "juan@juan.com",
-        "empresa": "Codigo Con Juan"
+      "id": 1,
+      "nombre": "Juan",
+      "telefono": 102013313,
+      "email": "juan@juan.com",
+      "empresa": "Codigo Con Juan"
     },
     {
-        "id": 2,
-        "nombre": "Karen",
-        "telefono": 138198313,
-        "email": "karen@juan.com",
-        "empresa": "Codigo Con Juan"
+      "id": 2,
+      "nombre": "Karen",
+      "telefono": 138198313,
+      "email": "karen@juan.com",
+      "empresa": "Codigo Con Juan"
     },
     {
-        "id": 3,
-        "nombre": "Josue",
-        "telefono": 31983913,
-        "email": "josue@juan.com",
-        "empresa": "Codigo Con Juan"
+      "id": 3,
+      "nombre": "Josue",
+      "telefono": 31983913,
+      "email": "josue@juan.com",
+      "empresa": "Codigo Con Juan"
     },
     {
-        "id": 4,
-        "nombre": "Miguel",
-        "telefono": 319381983,
-        "email": "miguel@juan.com",
-        "empresa": "Codigo Con Juan"
+      "id": 4,
+      "nombre": "Miguel",
+      "telefono": 319381983,
+      "email": "miguel@juan.com",
+      "empresa": "Codigo Con Juan"
     },
     {
-        "id": 5,
-        "nombre": "Pedro",
-        "telefono": 1398198938,
-        "email": "pedro@juan.com",
-        "empresa": "Codigo Con Juan"
+      "id": 5,
+      "nombre": "Pedro",
+      "telefono": 1398198938,
+      "email": "pedro@juan.com",
+      "empresa": "Codigo Con Juan"
+    },
+    {
+      "nombre": "Jhonatan Véliz",
+      "empresa": "pawered",
+      "email": "correo@gmail.com",
+      "telefono": "50670910",
+      "notas": "empresa de tecnologia digital",
+      "id": 6
+    },
+    {
+      "nombre": "Pedrito el del patio",
+      "empresa": "los cobaneros",
+      "email": "coban@gmail.hot",
+      "telefono": "122112122",
+      "notas": "comedor las buenas vibras",
+      "id": 7
     }
-]
+  ]
+}

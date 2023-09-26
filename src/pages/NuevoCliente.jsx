@@ -1,6 +1,7 @@
-import { useNavigate, Form, useActionData } from "react-router-dom";
+import { useNavigate, Form, useActionData, redirect } from "react-router-dom";
 import Formulario from "../components/Formulario";
 import { Errors } from "../components/Errors";
+import { postClients } from "../data/clientes";
 
 export async function action({ request }) {
   const formData = await request.formData();
@@ -9,7 +10,7 @@ export async function action({ request }) {
   const errors = [];
   const regex = new RegExp("([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\"\(\[\]!#-[^-~ \t]|(\\[\t -~]))+\")@([!#-'*+/-9=?A-Z^-~-]+(\.[!#-'*+/-9=?A-Z^-~-]+)*|\[[\t -Z^-~]*])");
 
-  if(!email.match(regex)){
+  if (!email.match(regex)) {
     errors.push('email no válido');
   }
 
@@ -17,10 +18,13 @@ export async function action({ request }) {
     errors.push('todos los campos son obligatorios');
   }
 
-  if(errors.length > 0 ){
+  if (errors.length > 0) {
     return errors
   }
-  return null;
+
+  await postClients(data);
+
+  return redirect('/');
 }
 
 const NuevoCliente = () => {
@@ -35,7 +39,7 @@ const NuevoCliente = () => {
 
       <div className='flex justify-end'>
         <button className='bg-blue-900 text-white py-2 px-6 font-bold rounded'
-        onClick={() => navigate(-1)}>
+          onClick={() => navigate(-1)}>
           Volver
         </button>
       </div>
@@ -43,15 +47,15 @@ const NuevoCliente = () => {
       <div className="bg-white shadow rounded md:w-3/4 p-6">
 
         {
-          errores?.length && errores.map( ( err, i ) => <Errors key={i}> { err } </Errors> ) 
+          errores?.length && errores.map((err, i) => <Errors key={i}> {err} </Errors>)
         }
 
         <Form method="POST" noValidate>
 
           <Formulario />
-          <input type="submit" 
-          className="bg-blue-800 font-bold uppercase text-white w-full p-2 rounded cursor-pointer"
-          value='registrar cliente'
+          <input type="submit"
+            className="bg-blue-800 font-bold uppercase text-white w-full p-2 rounded cursor-pointer"
+            value='registrar cliente'
           />
 
         </Form>

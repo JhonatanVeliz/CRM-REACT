@@ -6,26 +6,6 @@ export const useFetch = async (url) => {
 
   const [state, setState] = useState(initialState);
 
-  // const getFetch = async () => {
-
-  //   if(!url) return;
-
-  //   try {
-  //     const response = await fetch(url);
-  //     const data = await response.json();
-  
-  //     if(!response.ok){
-  //       console.log('no funciono', response.status);
-  //       return
-  //     }
-  
-  //     setState({ data: data, loading: false, errors: false });
-      
-  //   } catch (error) {
-  //     setState({ data: null, loading: false, errors: error });
-  //   }
-  // }
-
   const getFetch = async () => {
 
     if (!url) return;
