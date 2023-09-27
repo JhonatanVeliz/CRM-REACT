@@ -60,9 +60,25 @@ const updateClient = async (id, data) => {
   } catch (error) { console.log(error) }
 }
 
+const deleteClient = async (id) => {
+  const url = `${import.meta.env.VITE_API_URL}/${id}`;
+
+  try {
+
+    const options = {
+      method: 'DELETE'
+    }
+
+    const respuesta = await fetch(url, options);
+    await respuesta.json() ;
+  }
+  catch (error) { console.log(error) }
+}
+
 export {
   getClients,
   postClients,
   getClientUpdate,
-  updateClient
+  updateClient,
+  deleteClient
 }

@@ -1,4 +1,12 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Form, redirect } from "react-router-dom";
+import { deleteClient } from "../data/clientes";
+
+export const action = async ({ params })=>{
+  
+  await deleteClient( params.clienteId );
+
+  return redirect('/');
+}
 
 function Cliente({ cliente }) {
 
@@ -27,13 +35,18 @@ function Cliente({ cliente }) {
         >
           editar
         </button>
-        <button type="button" className="text-sm uppercase text-red-500 hover:text-red-700">
-          eliminar
-        </button>
+
+        <Form method="post" action={`/clientes/${id}/destroy`}>
+          <button 
+            type="submit" 
+            className="text-sm uppercase text-red-500 hover:text-red-700"
+          >
+            eliminar
+          </button>
+        </Form>
       </td>
       
     </tr>
   )
 }
-
 export default Cliente
